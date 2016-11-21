@@ -8,9 +8,9 @@
   <div class="container-fluid">
     <div class="quick-actions_homepage">
       <ul class="quick-actions">
-        <li class="bg_lb"> <a href="admin.php"> <i class="icon-dashboard"></i>  My Dashboard </a> </li>
-        <li class="bg_lg span3"> <a href="campsiteowners.php"> <i class="icon-user"></i> Campsite Owners</a> </li>
-        <li class="bg_ly"> <a href="travelers.php"> <i class="icon-group"></i>Travelers </a> </li>
+        <li class="bg_lb"> <a href="<?php echo base_url();?>admin/dashboard"> <i class="icon-dashboard"></i>  My Dashboard </a> </li>
+        <li class="bg_lg span3"> <a href="#"> <i class="icon-user"></i> Campsite Owners</a> </li>
+        <li class="bg_ly"> <a href="#"> <i class="icon-group"></i>Travelers </a> </li>
         <li class="bg_lo"> <a href="#"> <i class="icon-th"></i> Booking</a> </li>
         <li class="bg_ls"> <a href="#"> <i class="icon-money"></i> Payments History</a> </li>
         <li class="bg_lo span3"> <a href="#"> <i class="icon-th-list"></i> Property</a> </li>

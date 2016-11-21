@@ -22,11 +22,7 @@ class Login extends CI_Controller{
     public function validateuser()
     {
          // Validate form fields
-        $this->form_validation->set_rules('email', 'email', 'trim|valid_email|required', ['required' => sprintf($this->lang->line('required'), 'Email')]);
-        $this->form_validation->set_rules('password', 'Password', 'trim|required', ['required' => sprintf($this->lang->line('required'), 'Password')]);
-        if ($this->form_validation->run() == TRUE)
-        {
-            $data['email'] = $this->input->post('email');
+       $data['email'] = $this->input->post('email');
             $data['password'] = md5($this->input->post('password'));
             $result = $this->login_model->check_login($data);           
             $result = ($result['data']) ? $result['data'][0] : '';
@@ -49,37 +45,31 @@ class Login extends CI_Controller{
                 
             } else {
                 $this->session->set_flashdata('error', $this->lang->line('login_invalid'));
+                $data['title'] = 'RV Sites | Login';
+                redirect('login', $data);
             }
-        }
 
-        $data['title'] = 'RV Sites | Login';
-        $this->load->view('login');
+
+        
 
     }
     
-    /* Show the login page */
-    public function loginForm() {
-        $data['title'] = $this->lang->line('LoginPage_title');
-        /* If The User Logged in Already then redirect to respective Dashboard*/
-        if($this->session->userdata('accountno'))
-        {
-           
-            switch($this->session->userdata('usertype')){
-                case '1': 
-                    redirect('PerksMeDashboard');
-                    break;
-                case '2': 
-                    redirect('Dashboard');
-                    break;
-                case '3':                     
-                    redirect('UserHome');
-                    break;
-            }
-        }
-	    $this->load->view('enduser/headernew',$data);
-        $this->load->view('login');
-        $this->load->view('enduser/footernew');
+   /**
+     * Logs the user out
+     * @return void
+     * @access public
+     */
+    public function logout() {
+        $this->sess_expiration = 0;
+        $this->session->unset_userdata('id');
+        $this->session->unset_userdata('email');
+        $this->session->unset_userdata('mobile');
+        $this->session->unset_userdata('user_type');
+        //$this->session->sess_destroy();
+
+        $this->session->set_flashdata('success', $this->lang->line('logout_success'));
+        redirect('login', 'refresh');
     }
-    
     
 }
+

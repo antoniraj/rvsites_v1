@@ -11,31 +11,19 @@
 <!--end-Footer-part-->
 
 <?php
-   $header_js = array(
-            'js/excanvas.min',
+  
+     $list_js = array(            
             'js/jquery.min',
             'js/jquery.ui.custom',
             'js/bootstrap.min',
-            'js/jquery.flot.min',
-            'js/jquery.flot.resize.min',
-            'js/jquery.peity.min',
-            'js/fullcalendar.min',
-            'js/matrix.dashboard',
-            'js/jquery.gritter.min',
-            'js/matrix.interface', 
-            'js/matrix.chat', 
-            'js/jquery.validate', 
-            'js/matrix.form_validation', 
-            'js/jquery.wizard', 
             'js/jquery.uniform',
             'js/select2.min',
-            'js/matrix.popover', 
             'js/jquery.dataTables.min',
-            'js/matrix.tables',     
+            'js/matrix.',
+            'js/matrix.tables',           
         );
 
-
-  add_js_file($header_js);
+  add_js_file($list_js);
 ?>
 
 <script type="text/javascript">

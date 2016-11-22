@@ -70,6 +70,38 @@ class Campsiteowners_model extends CI_Model {
         }
     }
 
+     /**
+    * Inserts Absence  details
+    * @access public
+    * @param $data array data
+    * @return boolean true details added successfully
+    */
+    public function add_campsite_owner($data) {
+        $table_name = 'campsite_owners';
+        $result = $this->db->insert($table_name, $data);
+        if ($result) {
+            return $this->db->insert_id();
+        } else {
+            return false;
+        }
+    }
+
+      /**
+    * Inserts Absence  details
+    * @access public
+    * @param $data array data
+    * @return boolean true details added successfully
+    */
+    public function add_user($data) {
+        $table_name = 'users';
+        $result = $this->db->insert($table_name, $data);
+        if ($result) {
+            return $this->db->insert_id();
+        } else {
+            return false;
+        }
+    }
+
    
 
 }

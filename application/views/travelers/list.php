@@ -31,7 +31,7 @@
 					  <td><?php echo $list->email;?> </td>
 					  <td><?php echo $list->mobile?></td>
 					  <td class="center"><?php echo $list->status;?></td>
-					  <td><a href="<?php base_url();?>/admin/campsiteowners/view/<?php echo $list->id;?>"><i class="icon icon-search"></i> View</a></td>
+					  <td></td>
 					</tr>
 				<?php }?>
                

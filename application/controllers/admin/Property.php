@@ -33,7 +33,7 @@ class Property extends CI_Controller {
 
         $this->load->view('admin/admin_header');
         $this->load->view('property/list',$data);
-        $this->load->view('admin/admin_footer');
+        $this->load->view('admin/admin_list_footer');
     }
 	
 	/**

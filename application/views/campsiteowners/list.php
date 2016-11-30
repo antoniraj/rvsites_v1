@@ -30,7 +30,9 @@
 					  <td><?php echo $list->email;?> </td>
 					  <td><?php echo $list->mobile?></td>
 					  <td class="center"><?php echo $list->status;?></td>
-					  <td><a href="<?php base_url();?>/admin/campsiteowners/view/<?php echo $list->id;?>"><i class="icon icon-search"></i> View</a></td>
+					  <td><a href="<?php echo base_url();?>/admin/campsiteowners/edit/<?php echo $list->coid;?>"><i class="icon icon-edit"></i> Edit</a>
+              &nbsp; <a href="<?php echo base_url();?>/admin/campsiteowners/delete/<?php echo $list->coid;?>"><i class="icon icon-trash"></i> Delete</a>
+            </td>
 					</tr>
 				<?php }?>
                

@@ -6,7 +6,7 @@
     <hr>
     <div class="row-fluid">
       <div class="span12">
-      <!-- <div align="right"><a href="add_property.php" class="btn btn-success">Add New</a></div> -->
+      <div align="right"><a href="<?php echo base_url();?>siteowner/property/add" class="btn btn-success">Add New</a></div>
         <div class="widget-box">
 
           <div class="widget-title"> <span class="icon"><i class="icon-th"></i></span>

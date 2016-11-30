@@ -8,21 +8,14 @@ $(document).ready(function(){
 	// Form Validation
     $("#basic_validate").validate({
 		rules:{
-			required:{
+			firstname:{
 				required:true
 			},
 			email:{
 				required:true,
 				email: true
 			},
-			date:{
-				required:true,
-				date: true
-			},
-			url:{
-				required:true,
-				url: true
-			}
+			
 		},
 		errorClass: "help-inline",
 		errorElement: "span",

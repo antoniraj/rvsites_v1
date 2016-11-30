@@ -32,7 +32,7 @@ class Campsiteowners_model extends CI_Model {
     public function get_all() {
         $table_name = $this->table_name;
         $return = [];
-        $this->db->select('CO.*,US.*')
+        $this->db->select('CO.*,CO.id AS coid,US.*')
                 ->from($table_name)
 				->join('users as US','CO.user_id = US.id','inner')
                 ->where('US.status', 'Active');            
@@ -57,7 +57,7 @@ class Campsiteowners_model extends CI_Model {
         $return = [];
         $this->db->select('CO.*,US.*')
                 ->from($table_name)
-				->join('users as US','CO.user_id = US.id','inner')
+				->join('users as US','CO.user_id = US.id','left')
                 ->where('US.status', 'Active')
 				->where('CO.id', $id);            
               
@@ -86,7 +86,7 @@ class Campsiteowners_model extends CI_Model {
         }
     }
 
-      /**
+    /**
     * Inserts Absence  details
     * @access public
     * @param $data array data
@@ -101,6 +101,32 @@ class Campsiteowners_model extends CI_Model {
             return false;
         }
     }
+
+    /**
+    * Update Absence  details
+    * @access public
+    * @param $data array data
+    * @return boolean true details added successfully
+    */
+    public function edit_campsite_owner($data,$id) {
+        $table_name = 'campsite_owners';
+
+        $this->db->where('id', $id);
+        $this->db->update($table_name, $data);       
+    }
+
+    /**
+    * Inserts Absence  details
+    * @access public
+    * @param $data array data
+    * @return boolean true details added successfully
+    */
+    public function edit_user($data,$id) {
+        $table_name = 'users';
+        $this->db->where('id', $id);
+        $this->db->update($table_name, $data); 
+    }
+
 
    
 

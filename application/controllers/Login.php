@@ -22,7 +22,42 @@ class Login extends CI_Controller{
     public function validateuser()
     {
          // Validate form fields
-       $data['email'] = $this->input->post('email');
+            $data['email'] = $this->input->post('email');
+            $data['password'] = md5($this->input->post('password'));
+            
+            $result = $this->login_model->check_login($data);           
+            $result = ($result['data']) ? $result['data'][0] : '';
+
+           if (!empty($result)) {
+                $session_data['id'] = $result->id;               
+                $session_data['email'] = $result->email;
+                $session_data['mobile'] = $result->mobile;
+                $session_data['user_type'] = $result->user_type;              
+                $this->session->set_userdata($session_data);
+                
+                // Check whether user Agent or Clerk
+                if ($result->user_type == USER_TYPE_ADMIN) {
+                    redirect('dashboard', $result);
+                } else if ($result->user_type == USER_TYPE_SITEOWNER) {
+                    redirect('siteowner/dashboard', $result);
+                } else if ($result->user_type == USER_TYPE_TRAVELLER) {
+                    redirect('home', $result);
+                }
+                
+            } else {
+                $this->session->set_flashdata('error', $this->lang->line('login_invalid'));
+                $data['title'] = 'RV Sites | Login';
+                redirect('login', $data);
+            }
+
+
+        
+
+    }
+    public function signin()
+    {
+         // Validate form fields
+            $data['email'] = $this->input->post('email');
             $data['password'] = md5($this->input->post('password'));
             $result = $this->login_model->check_login($data);           
             $result = ($result['data']) ? $result['data'][0] : '';
@@ -36,7 +71,7 @@ class Login extends CI_Controller{
                 
                 // Check whether user Agent or Clerk
                 if ($result->user_type == USER_TYPE_ADMIN) {
-                    redirect('admin/dashboard', $result);
+                    redirect('dashboard', $result);
                 } else if ($result->user_type == USER_TYPE_SITEOWNER) {
                     redirect('siteowner/dashboard', $result);
                 } else if ($result->user_type == USER_TYPE_TRAVELLER) {

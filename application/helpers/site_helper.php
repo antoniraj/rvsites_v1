@@ -117,3 +117,12 @@ if ( ! function_exists('get_base_url') ) {
         return $url;
     }
 }
+
+/**
+ * Handles to returns encrypt string to md5
+ * @param type string
+ * @return string
+ */
+function encrypt_md5($string) {
+    return md5($string);
+}

@@ -15,7 +15,7 @@ $(document).ready(function(){
 
 	// === Make chart === //
     var plot = $.plot($(".chart"),
-           [ { data: sin, label: "Booked", color: "#ee7951"}, { data: cos, label: "Cancelled",color: "#4fb9f0" } ], {
+           [ { data: sin, label: "Ios App Installed", color: "#ee7951"}, { data: cos, label: "Ios App Uninstalled",color: "#4fb9f0" } ], {
                series: {
                    lines: { show: true },
                    points: { show: true }
